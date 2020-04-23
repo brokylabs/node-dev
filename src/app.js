@@ -9,8 +9,8 @@ import config from './config'
 
 dbConnect()
 
-
-app.get('/', (req, res) => res.send("it Work bro!!!"))
+// ROUTE
+app.get('/', (req, res) => res.send("it Work bro!!!, yeeahh!!!!"))
 
 const port = config.port
 const running = config.running
