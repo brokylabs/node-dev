@@ -16,5 +16,4 @@ router.post('/signup', (req, res) => {
 })
 
 // USER ROUTE
-app.use('/users', userRoute)
-
+router.use('/users', userRoute)
