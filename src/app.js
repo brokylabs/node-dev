@@ -1,16 +1,23 @@
-// IMPORT EXPRESS
+// IMPORT MODULES
 import express from 'express'
 const app = express()
+import bodyParser from 'body-parser'
+import {router} from './router'
 
-// DATABASE
+
+// DATABASE & CONFIG ENV
 import {dbConnect} from './database'
-// CONFIG ENV
 import config from './config'
-
 dbConnect()
 
+// MIDDLEWARE
+app.use(bodyParser.json()) // Read JSON
+app.use(bodyParser.urlencoded({extended: true})) // Read URLs
+
+
 // ROUTE
-app.get('/', (req, res) => res.send("it Work bro!!!, yeeahh!!!!"))
+app.use('/', router )
+
 
 const port = config.port
 const running = config.running
