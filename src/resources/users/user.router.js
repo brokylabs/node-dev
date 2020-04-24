@@ -1,12 +1,14 @@
 import express from 'express'
+import userController from './user.controller'
 export const userRoute = express.Router()
 
+userRoute
+    .route('/')
+    .get(userController.getUsers)
+    .post(userController.createUser)
 
-userRoute.get('/', (req, res) => {
-    res.send('Users pages')
-})
 
-userRoute.get('/:slug', (req, res) => {
-    res.send(`Users ID Is : ${req.params.slug}`)
+userRoute.get('/:id', (req, res) => {
+    res.send(`Users ID Is : ${req.params.id}`)
 })
 
