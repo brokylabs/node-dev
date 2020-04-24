@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 
 import appConfig from './config'
 
+mongoose.set('useCreateIndex', true);
 export const dbConnect = (config = appConfig) => {
     return mongoose
         .connect(config.database, 

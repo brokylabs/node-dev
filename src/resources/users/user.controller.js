@@ -25,7 +25,15 @@ const userController = {
     },
     async updateUsers(req, res){
         try {
-            const user = await User.findByIdAndUpdate(req.params.id, req.body)
+            const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true}, false)
+            res.status(200).send(user)
+        } catch (error) {
+            res.status(400).send(error)
+        }
+    },
+    async deleteUsers(req, res){
+        try {
+            const user = await User.deleteOne({ _id: req.params })
             res.status(200).send(user)
         } catch (error) {
             res.status(400).send(error)
