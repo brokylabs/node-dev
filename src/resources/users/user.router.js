@@ -8,7 +8,8 @@ userRoute
     .post(userController.createUser)
 
 
-userRoute.get('/:id', (req, res) => {
-    res.send(`Users ID Is : ${req.params.id}`)
-})
+userRoute
+    .route('/:id')
+    .put(userController.updateUsers)
+
 

@@ -22,6 +22,14 @@ const userController = {
         } catch (error) {
             res.status(400).send(error)  
         }
+    },
+    async updateUsers(req, res){
+        try {
+            const user = await User.findByIdAndUpdate(req.params.id, req.body)
+            res.status(200).send(user)
+        } catch (error) {
+            res.status(400).send(error)
+        }
     }
 }
 
