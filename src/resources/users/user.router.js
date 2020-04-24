@@ -13,7 +13,7 @@ userRoute
 // Home route with parse ID
 userRoute
     .route('/:id')
-    // .get
+    .get(userController.getProfile)
     // .post
     .put(userController.updateUsers)
     .delete(userController.deleteUsers)
