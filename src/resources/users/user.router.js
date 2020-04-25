@@ -6,7 +6,7 @@ export const userRoute = express.Router()
 userRoute
     .route('/')
     .get(userController.getUsers)
-    .post(userController.createUser)
+    // .post(userController.createUser)
     // .put
     // .delete
 
