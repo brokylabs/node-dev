@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import pick from 'lodash.pick'
-import bcrypt, { genSalt } from 'bcryptjs'
+import bcrypt  from 'bcryptjs'
+import Joi from 'joi'
 
 // Create schema (data modeling)
 const schema = {
@@ -46,8 +47,23 @@ userSchema.pre('save', async function(next){
 // Choose user data to send back to client
 userSchema.methods.toJSON = function () {
     let userObject = this.toObject()
-    return pick(userObject, ['_id', 'email', 'username', 'photoURL', 'bio', 'url'])
+    return pick(userObject, [
+        '_id', 
+        'email', 
+        'username', 
+        'photoURL', 
+        'bio', 
+        'url'
+    ])
 }
 
 // Export Model
 export const User = mongoose.model('user', userSchema)
+
+export function validateUser(data){
+    const schema = Joi.object().keys({
+        email : Joi.string().required().email().label('"not a valid email'),
+        password : Joi.string().required().min(6).label('password is too short')
+    })
+    return Joi.validate(data, schema)
+}

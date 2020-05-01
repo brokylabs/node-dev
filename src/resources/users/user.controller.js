@@ -1,5 +1,5 @@
 // import User Model
-import {User} from './user.model'
+import {User, validateUser} from './user.model'
 import pick from 'lodash.pick'
 
 
@@ -7,6 +7,11 @@ import pick from 'lodash.pick'
 const userController = {
     async createUser( req, res) {
         try {
+            const { error } = validateUser(req.body)
+            if(error){
+                return res.status(400).send(error.details[0].context.label)
+            }
+
             let user = new User(pick(req.body, ['email', 'password']))
             await user.save()
             res.status(200).send(user)

@@ -8,7 +8,7 @@ router.get('/about', (req, res) => res.send('About page'))
 
 
 router.get('/signin', (req, res) => res.send('Signin page'))
-router.post('/signup',userController.createUser)
+router.post('/signup', userController.createUser)
 
 // USER ROUTE
 router.use('/users', userRoute)

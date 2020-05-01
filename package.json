@@ -17,9 +17,10 @@
     "eslint-config-prettier": "^6.11.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
+    "joi": "^13.4.0",
     "lodash.merge": "^4.6.2",
     "lodash.pick": "^4.4.0",
-    "mongoose": "^5.9.10",
+    "mongoose": "^5.9.11",
     "nodemon": "^2.0.3"
   },
   "devDependencies": {
