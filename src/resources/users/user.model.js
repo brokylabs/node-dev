@@ -19,9 +19,10 @@ const schema = {
         minlength : 6
 
     },
-    usetname : {
+    username : {
         type: String,
-        trim: true
+        trim: true,
+        unique: true
     },
     photoURL : String,
     bio : String,
@@ -33,7 +34,7 @@ const schema = {
 // Create the model
 const userSchema = new mongoose.Schema(schema, {timestamps:true})
 
-// Hansh password before sace to the database
+// Hansh password before save to the database
 userSchema.pre('save', async function(next){
     if(this.isModified('password')){
         const salt = await bcrypt.genSalt(10)

@@ -3,6 +3,8 @@ import {User, validateUser} from './user.model'
 import pick from 'lodash.pick'
 
 
+
+
 // Create User Controllr
 const userController = {
     async createUser( req, res) {
@@ -30,7 +32,17 @@ const userController = {
     },
     async updateUsers(req, res){
         try {
-            const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true}, false)
+            // const { error } = validateUser(req.body)
+            // if(error){
+            //     return res.status(400).send(error.details[0].context.label)
+            // }
+
+            console.error(req.body)
+            const user = await User.findByIdAndUpdate(
+                req.params.id, 
+                req.body,
+                { new: true}
+                )
             res.status(200).send(user)
         } catch (error) {
             res.status(400).send(error)

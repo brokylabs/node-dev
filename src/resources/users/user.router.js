@@ -1,6 +1,8 @@
 import express from 'express'
 import userController from './user.controller'
 export const userRoute = express.Router()
+import { sanitizeBody } from 'express-validator'
+
 
 // Home route
 userRoute
@@ -10,11 +12,21 @@ userRoute
     // .put
     // .delete
 
-// Home route with parse ID
+// Home route with ID
 userRoute
     .route('/:id')
     .get(userController.getProfile)
     // .post
-    .put(userController.updateUsers)
-    .delete(userController.deleteUsers)
+    .put(
+        
+        [
+            //  email, username, url etc ..
+            sanitizeBody('email').trim().escape(),
+            sanitizeBody('username').escape().trim(),
+            sanitizeBody('url').escape().trim(),
+            sanitizeBody('bio').escape().trim(),
+        ], 
+       
 
+    userController.updateUsers)
+    .delete(userController.deleteUsers)
