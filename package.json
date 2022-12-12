@@ -16,7 +16,7 @@
     "dotenv": "8.2.0",
     "eslint-config-prettier": "6.11.0",
     "esm": "^3.2.25",
-    "express": "4.17.1",
+    "express": "4.17.3",
     "express-validator": "6.4.1",
     "joi": "13.4.0",
     "lodash.merge": "4.6.2",
